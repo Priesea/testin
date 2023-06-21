@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="styles.css">
+        <script>
+        function validarFormulario() {
+            var nombre = document.getElementById("nombre").value.trim();
+            var apellido = document.getElementById("apellido").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var fechaNacimiento = document.getElementById("fechaNacimiento").value.trim();
+            var edad = document.getElementById("edad").value.trim();
+            var nacionalidad = document.getElementById("nacionalidad").value.trim();
+            var dni = document.getElementById("dni").value.trim();
+            var genero = document.getElementById("genero").value.trim();
+            var estadoCivil = document.getElementById("estadoCivil").value.trim();
+            var telefono = document.getElementById("telefono").value.trim();
+            var celular = document.getElementById("celular").value.trim();
+            var direccion = document.getElementById("direccion").value.trim();
+            var provincia = document.getElementById("provincia").value.trim();
+            var codigoPostal = document.getElementById("codigoPostal").value.trim();
+            var pais = document.getElementById("pais").value.trim();
+            var nivelEstudio = document.getElementById("nivelEstudio").value.trim();
+            var trabajaActualmente = document.getElementById("trabajaActualmente").value.trim();
+            var buscaTrabajo = document.getElementById("buscaTrabajo").value.trim();
+
+            var errorContainer = document.getElementById("errorContainer");
+            errorContainer.innerHTML = "";
+
+            
+            if (nombre === "") {
+                mostrarError("Por favor, ingresa tu nombre.", "nombre");
+                return false;
+            }
+
+            if (apellido === "") {
+                mostrarError("Por favor, ingresa tu apellido.", "apellido");
+                return false;
+            }
+
+            if (email === "") {
+                mostrarError("Por favor, ingresa tu email.", "email");
+                return false;
+            }
+
+            if (fechaNacimiento === "") {
+                mostrarError("Por favor, ingresa tu fecha de nacimiento.", "fechaNacimiento");
+                return false;
+            }
+
+            if (edad === "") {
+                mostrarError("Por favor, ingresa tu edad.", "edad");
+                return false;
+            }
+
+            if (nacionalidad === "") {
+                mostrarError("Por favor, ingresa tu nacionalidad.", "nacionalidad");
+                return false;
+            }
+
+            if (dni === "") {
+                mostrarError("Por favor, ingresa tu DNI.", "dni");
+                return false;
+            }
+
+            if (genero === "") {
+                mostrarError("Por favor, ingresa tu género.", "genero");
+                return false;
+            }
+
+            if (estadoCivil === "") {
+                mostrarError("Por favor, ingresa tu estado civil.", "estadoCivil");
+                return false;
+            }
+
+            if (telefono === "") {
+                mostrarError("Por favor, ingresa tu teléfono.", "telefono");
+                return false;
+            }
+
+            if (celular === "") {
+                mostrarError("Por favor, ingresa tu celular.", "celular");
+                return false;
+            }
+
+            if (direccion === "") {
+                mostrarError("Por favor, ingresa tu dirección.", "direccion");
+                return false;
+            }
+
+            if (provincia === "") {
+                mostrarError("Por favor, ingresa tu provincia.", "provincia");
+                return false;
+            }
+
+            if (codigoPostal === "") {
+                mostrarError("Por favor, ingresa tu código postal.", "codigoPostal");
+                return false;
+            }
+
+            if (pais === "") {
+                mostrarError("Por favor, ingresa tu país.", "pais");
+                return false;
+            }
+
+            if (nivelEstudio === "") {
+                mostrarError("Por favor, ingresa tu nivel de estudio.", "nivelEstudio");
+                return false;
+            }
+
+            if (trabajaActualmente === "") {
+                mostrarError("Por favor, indica si trabajas actualmente.", "trabajaActualmente");
+                return false;
+            }
+
+            if (buscaTrabajo === "") {
+                mostrarError("Por favor, indica si estás buscando trabajo.", "buscaTrabajo");
+                return false;
+            }
+
+            var numericFields = [edad, dni, telefono, celular, codigoPostal];
+            for (var i = 0; i < numericFields.length; i++) {
+                if (!esNumero(numericFields[i])) {
+                    mostrarError("Por favor, ingresa solo números en los campos numéricos.", "");
+                    return false;
+                }
+            }
+
+            var textFields = [nombre, apellido, nacionalidad, genero, estadoCivil, provincia, pais];
+            for (var i = 0; i < textFields.length; i++) {
+                if (!esTexto(textFields[i])) {
+                    mostrarError("Por favor, ingresa solo letras en los campos de texto.", "");
+                    return false;
+                }
+            }
+
+
+            return true;
+        }
+
+        function mostrarError(mensaje, campo) {
+            var errorContainer = document.getElementById("errorContainer");
+            var errorElement = document.createElement("p");
+            errorElement.className = "error-message";
+            errorElement.textContent = mensaje;
+
+            if (campo !== "") {
+                var campoInput = document.getElementById(campo);
+                campoInput.classList.add("error-input");
+                campoInput.addEventListener("input", limpiarError);
+            }
+
+            errorContainer.appendChild(errorElement);
+        }
+
+        function limpiarError(event) {
+            var campoInput = event.target;
+            campoInput.classList.remove("error-input");
+            var errorContainer = document.getElementById("errorContainer");
+            errorContainer.innerHTML = "";
+        }
+
+        function esNumero(valor) {
+            return /^\d+$/.test(valor);
+        }
+
+        function esTexto(valor) {
+            return /^[a-zA-Z\sáéíóúÁÉÍÓÚñÑüÜ]+$/.test(valor);
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validarFormulario()">
+        <h1>Formulario de Registro</h1>
+
+        <div class="form-row">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
+        </div>
+
+        <div class="form-row">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" required>
+        </div>
+
+        <div class="form-row">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+        </div>
+
+        <div class="form-row">
+            <label for="fechaNacimiento">Fecha de nacimiento:</label>
+            <input type="date" id="fechaNacimiento" required>
+        </div>
+
+        <div class="form-row">
+            <label for="edad">Edad:</label>
+            <input type="text" id="edad" required>
+        </div>
+
+        <div class="form-row">
+            <label for="nacionalidad">Nacionalidad:</label>
+            <input type="text" id="nacionalidad" required>
+        </div>
+
+        <div class="form-row">
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" required>
+        </div>
+
+        <div class="form-row">
+            <label for="genero">Género:</label>
+            <input type="text" id="genero" required>
+        </div>
+
+        <div class="form-row">
+            <label for="estadoCivil">Estado Civil:</label>
+            <input type="text" id="estadoCivil" required>
+        </div>
+
+        <div class="form-row">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" required>
+        </div>
+
+        <div class="form-row">
+            <label for="celular">Celular:</label>
+            <input type="text" id="celular" required>
+        </div>
+
+        <div class="form-row">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" required>
+        </div>
+
+        <div class="form-row">
+            <label for="provincia">Provincia:</label>
+            <input type="text" id="provincia" required>
+        </div>
+
+        <div class="form-row">
+            <label for="codigoPostal">Código Postal:</label>
+            <input type="text" id="codigoPostal" required>
+        </div>
+
+        <div class="form-row">
+            <label for="pais">País:</label>
+            <input type="text" id="pais" required>
+        </div>
+
+        <div class="form-row">
+            <label for="nivelEstudio">Nivel de estudio:</label>
+            <input type="text" id="nivelEstudio" required>
+        </div>
+
+        <div class="form-row">
+            <label for="trabajaActualmente">Trabaja actualmente:</label>
+            <select id="trabajaActualmente" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Si">Sí</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <label for="buscaTrabajo">Busca trabajo:</label>
+            <select id="buscaTrabajo" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Si">Sí</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="form-row">
+            <input type="submit" value="Enviar">
+        </div>
+
+        <div id="errorContainer"></div>
+    </form>
+</body>
+</html>
