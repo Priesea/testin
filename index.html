@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8"> //Aclariaciones
+    <meta charset="UTF-8">
     <title>Formulario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
@@ -17,7 +17,7 @@
 
         for (var i = 0; i < requiredFields.length; i++) {
           var field = requiredFields[i];
-          var fieldName = field.getAttribute("id");
+          var fieldName = field.getAttribute("name");
           var fieldValue = field.value.trim();
 
           if (fieldValue === "") {
@@ -81,93 +81,92 @@
     </script>
   </head>
   <body>
-    <form action="index2.html"></form>
-    <form onsubmit="validarFormulario(event)">
+    <form method="post" action="guardar_datos.php">
       <h1>Formulario de Registro</h1>
 
       <div class="form-row">
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" required>
+        <input type="text" name="nombre" required>
       </div>
 
       <div class="form-row">
         <label for="apellido">Apellido:</label>
-        <input type="text" id="apellido" required>
+        <input type="text" name="apellido" required>
       </div>
 
       <div class="form-row">
         <label for="email">Email:</label>
-        <input type="email" id="email" required>
+        <input type="email" name="email" required>
       </div>
 
       <div class="form-row">
         <label for="fechaNacimiento">Fecha de nacimiento:</label>
-        <input type="date" id="fechaNacimiento" required>
+        <input type="date" name="fechaNacimiento" required>
       </div>
 
       <div class="form-row">
         <label for="edad">Edad:</label>
-        <input type="text" id="edad" required>
+        <input type="text" name="edad" required>
       </div>
 
       <div class="form-row">
         <label for="nacionalidad">Nacionalidad:</label>
-        <input type="text" id="nacionalidad" required>
+        <input type="text" name="nacionalidad" required>
       </div>
 
       <div class="form-row">
         <label for="dni">DNI:</label>
-        <input type="text" id="dni" required>
+        <input type="text" name="dni" required>
       </div>
 
       <div class="form-row">
         <label for="genero">Género:</label>
-        <input type="text" id="genero" required>
+        <input type="text" name="genero" required>
       </div>
 
       <div class="form-row">
         <label for="estadoCivil">Estado Civil:</label>
-        <input type="text" id="estadoCivil" required>
+        <input type="text" name="estadoCivil" required>
       </div>
 
       <div class="form-row">
         <label for="telefono">Teléfono:</label>
-        <input type="text" id="telefono" required>
+        <input type="text" name="telefono" required>
       </div>
 
       <div class="form-row">
         <label for="celular">Celular:</label>
-        <input type="text" id="celular" required>
+        <input type="text" name="celular" required>
       </div>
 
       <div class="form-row">
         <label for="direccion">Dirección:</label>
-        <input type="text" id="direccion" required>
+        <input type="text" name="direccion" required>
       </div>
 
       <div class="form-row">
         <label for="provincia">Provincia:</label>
-        <input type="text" id="provincia" required>
+        <input type="text" name="provincia" required>
       </div>
 
       <div class="form-row">
         <label for="codigoPostal">Código Postal:</label>
-        <input type="text" id="codigoPostal" required>
+        <input type="text" name="codigoPostal" required>
       </div>
 
       <div class="form-row">
         <label for="pais">País:</label>
-        <input type="text" id="pais" required>
+        <input type="text" name="pais" required>
       </div>
 
       <div class="form-row">
         <label for="nivelEstudio">Nivel de estudio:</label>
-        <input type="text" id="nivelEstudio" required>
+        <input type="text" name="nivelEstudio" required>
       </div>
 
       <div class="form-row">
         <label for="trabajaActualmente">Trabaja actualmente:</label>
-        <select id="trabajaActualmente" required>
+        <select name="trabajaActualmente" required>
           <option value="">Selecciona una opción</option>
           <option value="Si">Sí</option>
           <option value="No">No</option>
@@ -176,7 +175,7 @@
 
       <div class="form-row">
         <label for="buscaTrabajo">Busca trabajo:</label>
-        <select id="buscaTrabajo" required>
+        <select name="buscaTrabajo" required>
           <option value="">Selecciona una opción</option>
           <option value="Si">Sí</option>
           <option value="No">No</option>
@@ -191,3 +190,4 @@
     </form>
   </body>
 </html>
+
